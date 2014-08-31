@@ -23,7 +23,7 @@ By default, you can paste to this pastebin by typing 'paste-logs'.
 
 You can also do so by copying and pasting:
 
-paste() { a=$(cat); curl -X POST -s -d "$a" http://paste.osmc.iodocuments | awk -F '"' '{print "http://paste.osmc.io/"$4}'; }
+paste() { a=$(cat); curl -X POST -s -d "$a" http://paste.osmc.io/documents | awk -F '"' '{print "http://paste.osmc.io/"$4}'; }
 
 And then you can do something like:
 
