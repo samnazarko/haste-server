@@ -1,5 +1,6 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,400italic);
 body {
-	background: #002B36;
+	background: #17394A;
 	padding: 20px 50px;
 	margin: 0px;
 }
@@ -9,14 +10,14 @@ body {
 textarea {
 	background: transparent;
 	border: 0px;
-	color: #fff;
+	color: #F0F0F0;
 	padding: 0px;
 	width: 100%;
 	height: 100%;
-	font-family: monospace;
+	font-family: "Source Sans Pro";
 	outline: none;
 	resize: none;
-	font-size: 13px;
+	font-size: 24px;
 }
 
 /* the line numbers */
@@ -29,7 +30,7 @@ textarea {
 	left: 0px;
 	width: 30px; /* 30 to get 20 away from box */
 	font-size: 13px;
-	font-family: monospace;
+	font-family: "Source Sans Pro";
 	text-align: right;
 }
 
@@ -62,7 +63,7 @@ textarea {
 #box1 {
 	padding: 5px;
 	text-align: center;
-	background: #00222b;
+	/*background: #00222b;*/
 }
 
 #box2 {
@@ -74,8 +75,8 @@ textarea {
 #box1 a.logo, #box1 a.logo:visited {
 	display: inline-block;
 	background: url(logo.png);
-	width: 126px;
-	height: 42px;
+	width: 102px;
+	height: 17px;
 }
 
 #box1 a.logo:hover {
