@@ -1,61 +1,49 @@
-# Haste
+# OSMC Pastebin
 
-Sharing code is a good thing, and it should be _really_ easy to do it.
-A lot of times, I want to show you something I'm seeing - and that's where we
-use pastebins.
-
-Haste is the prettiest, easiest to use pastebin ever made.
-
-## Basic Usage
-
-Type what you want me to see, click "Save", and then copy the URL.  Send that
-URL to someone and they'll see what you see.
-
-To make a new entry, click "New" (or type 'control + n')
-
-## From the Console
-
-Most of the time I want to show you some text, its coming from my current
-console session.  We should make it really easy to take code from the console
-and send it to people.
-
-`cat something | haste` # http://hastebin.com/1238193
-
-You can even take this a step further, and cut out the last step of copying the
-URL with:
-
-* osx: `cat something | haste | pbcopy`
-* linux: `cat something | haste | xsel`
-* windows: check out [WinHaste](https://github.com/ajryan/WinHaste)
-
-After running that, the STDOUT output of `cat something` will show up at a URL
-which has been conveniently copied to your clipboard.
-
-That's all there is to that, and you can install it with `gem install haste`
-right now.
-  * osx: you will need to have an up to date version of Xcode
-  * linux: you will need to have rubygems and ruby-devel installed
+This Pastebin provides OSMC users with a reliable method of reporting bugs and issues and to assist in helping you get support.
 
 ## Duration
 
-Pastes will stay for 30 days from their last view.  They may be removed earlier
-and without notice.
+Pastes will be archived for as long as reasonably possible, however they may be deleted later as part of a pruning process. 
 
 ## Privacy
 
 While the contents of hastebin.com are not directly crawled by any search robot
 that obeys "robots.txt", there should be no great expectation of privacy.  Post
-things at your own risk. Not responsible for any loss of data or removed
+things at your own risk. We are not responsible for any loss of data or removed
 pastes.
+
+You should be careful when uploading some logs, as they may have access passwords
+in them. It is your responsibility to ensure you do not have personally identifiable
+information or passwords in your pastes before posting them.
+
+## Uploading from the command line
+
+By default, you can paste to this pastebin by typing 'paste-logs'.
+
+You can also do so by copying and pasting:
+
+paste() { a=$(cat); curl -X POST -s -d "$a" http://paste.osmc.iodocuments | awk -F '"' '{print "http://paste.osmc.io/"$4}'; }
+
+And then you can do something like:
+
+cat /var/log/syslog | paste
+
+## Diagnostics
+
+The OSMC project may process these pastes in an automated manner to identify common bugs and issues and
+to assist resolving them in a timely manner. 
 
 ## Open Source
 
-Haste can easily be installed behind your network, and it's all open source!
+The OSMC Pastebin is based on Haste. It can easily be installed behind your network, and it's all open source!
 
 * [haste-client](https://github.com/seejohnrun/haste-client)
 * [haste-server](https://github.com/seejohnrun/haste-server)
+* [osmc-changes](https://github.com/samnazarko/haste-server)
 
 ## Author
 
 Code by John Crepezzi <john.crepezzi@gmail.com>
 Key Design by Brian Dawson <bridawson@gmail.com>
+Modified for OSMC by Sam Nazarko <email@samnazarko.co.uk>
