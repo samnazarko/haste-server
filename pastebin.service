@@ -1,0 +1,11 @@
+[Service]
+ExecStartPre=cd /root/haste-server
+ExecStart=/usr/bin/npm start /root/haste-server
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=pastebin
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
