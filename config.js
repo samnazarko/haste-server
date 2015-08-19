@@ -25,7 +25,8 @@
 
   "storage": {
     "type": "file",
-    "path" : "./data"
+    "path" : "./data",
+    "expire": 2592000
   },
 
   "documents": {
