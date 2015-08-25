@@ -99,16 +99,18 @@ var documentHandler = new DocumentHandler({
   keyGenerator: keyGenerator
 });
 
+var raw = function(request, response, next) {
+  var skipExpire = !!config.documents[request.params.id];
+	var key = request.params.id.split('.')[0];
+	return documentHandler.handleRawGet(key, response, skipExpire);
+};
+
 // Set the server up with a static cache
 connect.createServer(
   // First look for api calls
   connect.router(function(app) {
     // get raw documents - support getting with extension
-    app.get('/raw/:id', function(request, response, next) {
-      var skipExpire = !!config.documents[request.params.id];
-      var key = request.params.id.split('.')[0];
-      return documentHandler.handleRawGet(key, response, skipExpire);
-    });
+    app.get('/raw/:id', [raw], function(request, response, next) {});
     // add documents
     app.post('/documents', function(request, response, next) {
       return documentHandler.handlePost(request, response);
@@ -129,8 +131,8 @@ connect.createServer(
   // Then we can loop back - and everything else should be a token,
   // so route it back to /index.html
   connect.router(function(app) {
-    app.get('/:id', function(request, response, next) {
-      request.url = request.originalUrl = '/index.html';
+    app.get('/:id', [raw], function(request, response, next) {
+      //request.url = request.originalUrl = '/index.html';
       next();
     });
   }),
