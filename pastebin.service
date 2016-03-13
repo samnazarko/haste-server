@@ -1,6 +1,6 @@
 [Service]
-ExecStartPre=cd /root/haste-server
-ExecStart=/usr/bin/npm start /root/haste-server
+WorkingDirectory = /root/haste-server
+ExecStart=/usr/bin/nodejs /root/haste-server/server.js
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
